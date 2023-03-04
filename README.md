@@ -5,6 +5,7 @@ set up python and locust
 ```shell
 $ python3 -m venv venv
 $ pip3.9 install -r requirements.txt
+$ source venv/bin/activate
 ```
 
 Prepare and start local API server

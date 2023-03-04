@@ -1,5 +1,8 @@
-from fastapi import FastAPI
+import time
+
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from starlette import status
 
 app = FastAPI()
 
@@ -16,6 +19,11 @@ async def root():
 
 @app.get("/todos/{todo_id}")
 def get_todo(todo_id: int):
+    if todo_id % 5 == 0:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Article with id {id} not found"
+        )
     return {
         "todo": {
             "id": todo_id,
